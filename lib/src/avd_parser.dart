@@ -237,16 +237,6 @@ abstract class AvdParser extends GenericParser {
         warn('    Unable to scale to width/height:  '
             'Need viewportWidth/viewportHeight.');
         // Fall through
-      } else {
-        scaledWidth ??= width;
-        scaledHeight ??= height;
-        if (scaledWidth == width && scaledHeight == height) {
-          // Do nothing:  Fall through to the normal, unscaled case
-        } else {
-          // We should scale.  See issue 14.
-          root.transform =
-              MutableAffine.scale(scaledWidth / width, scaledHeight / height);
-        }
       }
     }
     avd = SvgParseGraph(root, width, height, tintColor, tintMode);
